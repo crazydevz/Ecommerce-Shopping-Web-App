@@ -21,7 +21,7 @@ public class Connection {
         try{  
                 Class.forName("com.mysql.jdbc.Driver");  
 
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_online_shopping?autoReconnect=true&useSSL=false","root","loolpop");
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_online_shopping?autoReconnect=true&useSSL=false","root","database_connection_password");
                 
                 stmt = con.createStatement();
         }
