@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package CatalogModule;
-
-import ProductModule.Product;
-import java.util.List;
+package OrderModule;
 
 /**
  *
  * @author Talha Iqbal
  */
-public interface CatalogInterface {
-    public List<Product> getProductList();
+public interface OrderIntfc {
+    public boolean processOrder(int customerId, String bankAccountNo);
 }

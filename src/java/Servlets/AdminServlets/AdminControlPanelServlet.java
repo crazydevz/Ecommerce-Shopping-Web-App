@@ -6,6 +6,7 @@ package Servlets.AdminServlets;
  * and open the template in the editor.
  */
 
+import AdminModule.Admin;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -34,7 +35,9 @@ public class AdminControlPanelServlet extends HttpServlet {
             res.sendRedirect("AdminLoginUpdate.jsp");
         }
         else if("Log out".equals(buttonClicked)){
-            req.getRequestDispatcher("index.jsp").forward(req, res);
+            Admin customer = (Admin) req.getSession().getAttribute("admin");
+            customer.logout();
+            res.sendRedirect("index.jsp");
         }
         else if("View Products".equals(buttonClicked)){
             res.sendRedirect("Catalog.jsp");

@@ -4,6 +4,7 @@
     Author     : Talha Iqbal
 --%>
 
+<%@page import="java.io.PrintWriter"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
 <%@page import="ProductModule.ProductDetails"%>
@@ -19,24 +20,24 @@
         <h1>Catalog</h1>
         <form name="extra" action="ManageCartServlet" method="POST">
             <input type="submit" value="Edit Cart" name="buttonClicked" />
-            <input type="submit" value="Checkout" name="buttonClicked" />
+            <!--<input type="submit" value="Checkout" name="buttonClicked" />-->
         </form>
         <table border="1">
             <thead>
                 <tr>
                     <th>Product Name</th>
                     <th>Price</th>
-                    <!--<th>In Cart</th>-->
                 </tr>
             </thead>
             <tbody>
                 <%
-                    List<ProductDetails> productList = new ProductDAO().getProducts(10);
-                    Iterator<ProductDetails> iterator = productList.iterator();
+                    try{
+                        List<ProductDetails> productList = new ProductDAO().getProducts(10);
+                        Iterator<ProductDetails> iterator = productList.iterator();
 
-                    ProductDetails p;
-                    while(iterator.hasNext()){
-                        p = (ProductDetails) iterator.next();
+                        ProductDetails p;
+                        while(iterator.hasNext()){
+                            p = (ProductDetails) iterator.next();
                 %>
                 <tr>
                     <form name="catalog" action="ManageCartServlet" method = "POST">
@@ -49,6 +50,10 @@
                     </form>
                 </tr>
                 <%      
+                        }
+                    }
+                    catch(NullPointerException ex){
+                        out.print("No product in Catalog.");
                     }
                 %>
             </tbody>

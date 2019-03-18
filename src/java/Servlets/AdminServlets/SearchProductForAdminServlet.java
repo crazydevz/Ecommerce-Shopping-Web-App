@@ -8,7 +8,6 @@ package Servlets.AdminServlets;
 import DAOs.ProductDAO;
 import ProductModule.ProductDetails;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,10 +23,6 @@ public class SearchProductForAdminServlet extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
         res.setContentType("text/html");
         
-//        req.getRequestDispatcher("ProductSearchServlet").include(req, res);
-
-        PrintWriter out = res.getWriter();
-        
         try{
             ProductDetails product = new ProductDAO().searchProductByName(req.getParameter("productName"));
 
@@ -40,8 +35,7 @@ public class SearchProductForAdminServlet extends HttpServlet {
             req.getRequestDispatcher("ManageProduct.jsp").forward(req, res);
         }
         catch(NullPointerException ex){
-            out.print("Product not found!");
+            res.getWriter().print("Product not found!");
         }
-//        req.getRequestDispatcher("ManageProduct.jsp").forward(req, res);
     }
 }

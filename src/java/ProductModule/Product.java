@@ -11,7 +11,7 @@ import DAOs.ProductDAO;
  *
  * @author Talha Iqbal
  */
-public class Product implements AdminModule.AdminAccessible{
+public class Product implements ProductModule.AdminAccessible{
     
     // objects
     private ProductDetails productDetails;

@@ -5,7 +5,9 @@
  */
 package Servlets;
 
+import CustomerModule.Customer;
 import java.io.IOException;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class CustomerMainMenuServlet extends HttpServlet {
     @Override
-    public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException{
+    public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException{
         String buttonClicked = req.getParameter("buttonClicked");
         
         if("Browse Catalog".equals(buttonClicked)){
@@ -29,6 +31,8 @@ public class CustomerMainMenuServlet extends HttpServlet {
             res.sendRedirect("CustomerInfoUpdate.jsp");
         }
         else if("Logout".equals(buttonClicked)){
+            Customer customer = (Customer) req.getSession().getAttribute("customer");
+            customer.logout();
             res.sendRedirect("index.jsp");
         }
     }

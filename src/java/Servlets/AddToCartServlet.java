@@ -10,7 +10,6 @@ import java.io.IOException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -22,16 +21,25 @@ public class AddToCartServlet extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException{
         res.setContentType("text/html");
         
-        HttpSession session = req.getSession();
-        Customer customer = (Customer) session.getAttribute("customer");
+        Customer customer = (Customer) req.getSession().getAttribute("customer");
         
         int itemId = Integer.parseInt(req.getParameter("productId"));
-            
-        if(customer.addItemToCart(itemId, 1)){
-            res.getWriter().print("Product Added to Cart!");
+          
+        try{
+            if(customer.isLoggedIn()){
+                if(customer.addItemToCart(itemId, 1)){
+                    res.getWriter().print("Product Added to Cart!");
+                }
+                else{
+                    res.getWriter().print("Product has already been added to Cart!");
+                }
+            }
+            else {
+                res.sendRedirect("CustomerLogin.jsp");
+            }
         }
-        else{
-            res.getWriter().print("Product has already been added to Cart!");
+        catch(NullPointerException ex){
+            res.sendRedirect("CustomerLogin.jsp");
         }
     }
 }

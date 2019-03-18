@@ -22,11 +22,21 @@ public class RemoveFromCartServlet extends HttpServlet {
         
         Customer customer = (Customer) req.getSession().getAttribute("customer");
         
-        if(customer.removeItemFromCart(Integer.parseInt(req.getParameter("productId")))){
-            res.getWriter().print("Product Removed from Cart");
+        try{
+            if(customer.isLoggedIn()){
+                if(customer.removeItemFromCart(Integer.parseInt(req.getParameter("productId")))){
+                    res.getWriter().print("Product Removed from Cart");
+                }
+                else{
+                    res.getWriter().print("This Product is not present in the Cart");
+                }
+            }
+            else {
+                res.sendRedirect("CustomerLogin.jsp");
+            }
         }
-        else{
-            res.getWriter().print("This Product is not present in Cart");
+        catch(NullPointerException ex){
+            res.sendRedirect("CustomerLogin.jsp");
         }
     }
 }

@@ -5,8 +5,6 @@
  */
 package Utilities;
 
-import Validation.Validator;
-
 /**
  *
  * @author Talha Iqbal
@@ -26,19 +24,9 @@ public abstract class User<T> {
     }
     
     public abstract boolean login();
-    public abstract void logout();
     public abstract boolean updateLoginDetails();
-//    public abstract boolean updateProfie();
-    
-//    protected boolean validateForSignIn(){
-//        return new Validator.Builder().setName(userDetails.getName()).setEmail(userDetails.getEmail()).setPassword(userDetails.getPassword())
-//                .build()
-//                .validateForSignIn();
-//    }
-//    
-//    protected boolean validateForSignUp(){
-//        return new Validator.Builder().setName(userDetails.getName()).setEmail(userDetails.getEmail()).setPassword(userDetails.getPassword())
-//                .build()
-//                .validateForSignUp();
-//    }
+    public void logout() {
+        if(this.userDetails.isLoggedIn())
+            this.userDetails.setLoginStatus(false);
+    }
 }

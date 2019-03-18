@@ -34,7 +34,7 @@
                 <%
                     Iterator<CartItemDetails> iterator = null;
                     try{
-                        List<CartItemDetails> itemDetailsList = new CartDAO().getCartItems();
+                        List<CartItemDetails> itemDetailsList = new CartDAO().getCartItems(customer.getId());
                         iterator = itemDetailsList.iterator();
                     }
                     catch(NullPointerException ex){

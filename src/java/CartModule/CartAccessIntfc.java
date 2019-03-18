@@ -9,6 +9,9 @@ package CartModule;
  *
  * @author Talha Iqbal
  */
+
+// Note: This interface is not currently in use.
+
 public interface CartAccessIntfc {
     public boolean deleteAllCartItems();
 }

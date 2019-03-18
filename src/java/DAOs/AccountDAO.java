@@ -11,7 +11,7 @@ import java.sql.SQLException;
  *
  * @author Talha Iqbal
  */
-public class AccountDAO{
+public class AccountDAO implements AccountDAOIntfc{
     
     // objects
     Connection conn;
@@ -20,13 +20,11 @@ public class AccountDAO{
         conn = new Connection();
     }
     
+    @Override
     public boolean populateCreditCardNo(String creditCardNo){
         boolean terminateConn = false;
         try{
-//            if(conn.con.isClosed()){
-                conn.makeConnection();
-//                terminateConn = true;
-//            }
+            conn.makeConnection();
             conn.rs = conn.stmt.executeQuery(
                         "SELECT `AUTO_INCREMENT`\n" +
                         "FROM  INFORMATION_SCHEMA.TABLES\n" +
@@ -62,6 +60,7 @@ public class AccountDAO{
         return false;
     }
    
+    @Override
     public float getCustomersBalance(int customerId, String bankAccountNum){
         float tempCustomerBalance = 0;
         conn.makeConnection();
@@ -95,6 +94,7 @@ public class AccountDAO{
         return tempCustomerBalance;
     }
     
+    @Override
     public boolean updateCustomerAccountBalance(float updatedAmount, String accountNumber){
         conn.makeConnection();
         try{

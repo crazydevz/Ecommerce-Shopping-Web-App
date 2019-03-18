@@ -13,7 +13,7 @@ import java.sql.SQLException;
  *
  * @author Talha Iqbal
  */
-public class AdminDAO {
+public class AdminDAO implements AdminDAOIntfc{
     
     // objects
     Connection conn;
@@ -22,6 +22,7 @@ public class AdminDAO {
         conn = new Connection();
     }
     
+    @Override
     public UserDetails readAdmin(String[] nameOrEmail, String password){
         conn.makeConnection();
         try{
@@ -50,6 +51,7 @@ public class AdminDAO {
         return null;
     }
     
+    @Override
     public int searchAdmin(String[] nameOrEmail, String password){
         conn.makeConnection();
         try{
@@ -75,6 +77,7 @@ public class AdminDAO {
         return 1;
     }
     
+    @Override
     public boolean updateLoginDetails(UserDetailsAccessor admin){
         conn.makeConnection();
         try{
@@ -94,40 +97,4 @@ public class AdminDAO {
         }
         return false;
     }
-    
-//    public boolean createAdmin(Admin admin){
-//        conn.makeconn();
-//        try{
-//            // Checking if there exists an admin in the database already
-//            conn.rs = conn.stmt.executeQuery(
-//                    "SELECT id FROM db_online_shopping.users\n" +
-//                    "WHERE id = 0;"
-//            );
-//            if(conn.rs.isBeforeFirst()){
-//                return false;
-//            }
-//            
-//            // if their is no admin currently in the database, register the new admin  in the database
-//            int done = conn.stmt.executeUpdate(
-//                    "INSERT INTO `db_online_shopping`.`users` (`id`, `name`, `email`, `password`)\n" +
-//                    " VALUES ('" + admin.getId() + "','" + admin.getName() + "', '" + admin.getEmail() + "', '" + admin.getPassword() + "');"
-//            );
-//            if(done <= 0)
-//                return false;
-//        }
-//        catch(SQLException ex){
-//            System.out.println(ex.getMessage());
-//        }
-//        finally{
-//            try{
-//                conn.con.close();
-//                conn.rs.close();
-//                conn.stmt.close();
-//            }
-//            catch(SQLException ex){
-//                System.out.println(ex.getMessage());
-//            }
-//        }
-//        return true;
-//    }
 }

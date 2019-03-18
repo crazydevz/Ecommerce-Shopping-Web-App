@@ -6,8 +6,6 @@
 package Servlets.Utilities;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,5 +28,8 @@ public class MainServlet extends HttpServlet {
         else if("Customer Signup".equals(buttonClicked)){
             res.sendRedirect("CustomerSignup.jsp");
         }
+//        else if("Browse Catalog".equals(buttonClicked)){
+//            res.sendRedirect("BrowseCatalog.jsp");
+//        }
     }
 }

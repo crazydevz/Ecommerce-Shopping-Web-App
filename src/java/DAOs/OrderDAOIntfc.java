@@ -5,10 +5,13 @@
  */
 package DAOs;
 
+import OrderModule.OrderDetailsAccessor;
+
 /**
  *
  * @author Talha Iqbal
  */
-class CartItemDetails {
+public interface OrderDAOIntfc {
     
+    public boolean createOrder(OrderDetailsAccessor orderDetails);
 }

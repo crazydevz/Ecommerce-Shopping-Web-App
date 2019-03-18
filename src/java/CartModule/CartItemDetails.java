@@ -11,7 +11,7 @@ package CartModule;
  */
 public class CartItemDetails {
     // local variables
-    int itemId;
+    private int itemId;
     private String itemName;
     private float itemPrice;
     private int itemsInCart;

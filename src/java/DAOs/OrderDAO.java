@@ -12,7 +12,7 @@ import java.sql.SQLException;
  *
  * @author Talha Iqbal
  */
-public class OrderDAO {
+public class OrderDAO implements OrderDAOIntfc{
     
     // objects
     private Connection conn;
@@ -21,6 +21,7 @@ public class OrderDAO {
         conn = new Connection();
     }
     
+    @Override
     public boolean createOrder(OrderDetailsAccessor orderDetails){
         conn.makeConnection();
         try{

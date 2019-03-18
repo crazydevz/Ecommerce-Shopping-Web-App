@@ -27,6 +27,10 @@
             <tbody>
                 <%
                     List<ProductDetails> productList = new ProductDAO().getProducts(10);
+                    if(productList == (null)){
+                        out.print("No Product found!");
+                        return;
+                    }
                     Iterator<ProductDetails> iterator = productList.iterator();
 
                     ProductDetails p;

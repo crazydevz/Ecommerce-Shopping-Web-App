@@ -12,6 +12,9 @@ import java.util.regex.Pattern;
  *
  * @author Talha Iqbal
  */
+
+// Note: This class is not currently in use in the project.
+
 public class Validator {
     private String name;
     private String email;

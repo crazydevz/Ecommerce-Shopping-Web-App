@@ -9,6 +9,9 @@ package Automation;
  *
  * @author Talha Iqbal
  */
+
+// Note: Run this class for deleting all contents of database (except for admin's info)
+
 public class AutomationRunner {
     public static void main(String[] args){
         AutomationDAO dao = new AutomationDAO();
