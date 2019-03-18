@@ -28,11 +28,6 @@
                     <tr>
                         <td>Category</td>
                         <td><input type="text" name="categoryList" value="${categoryList}" size="50" readonly/></td>
-<!--                        <td><select name="categoryList" value="${categoryList}">
-                                <option>Electronics</option>
-                                <option>Food</option>
-                                <option>Clothing</option>
-                            </select></td>-->
                     </tr>
                     <tr>
                         <td>Amount in Stock</td>

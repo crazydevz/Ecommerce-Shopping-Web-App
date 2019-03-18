@@ -15,7 +15,7 @@ import DAOs.ProductDAO;
  *
  * @author Talha Iqbal
  */
-public class Order {
+public class Order implements OrderIntfc{
     
     // interfaces
     private TransactionIntfc transaction;
@@ -29,6 +29,7 @@ public class Order {
         this.orderDetails.setShippingAddress(shippingAddress);
     }
     
+    @Override
     public boolean processOrder(int customerId, String bankAccountNo){
         if(orderDetails.getBillingAmount() != 0){
             transaction = new Accounting(bankAccountNo);

@@ -80,6 +80,10 @@
         <servlet-name>MainServlet</servlet-name>
         <servlet-class>Servlets.Utilities.MainServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditCartServlet</servlet-name>
+        <servlet-class>Servlets.EditCartServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UpdateProductServlet</servlet-name>
         <url-pattern>/UpdateProductServlet</url-pattern>
@@ -159,6 +163,10 @@
     <servlet-mapping>
         <servlet-name>MainServlet</servlet-name>
         <url-pattern>/MainServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditCartServlet</servlet-name>
+        <url-pattern>/EditCartServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

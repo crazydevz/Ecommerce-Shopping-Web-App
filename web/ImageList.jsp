@@ -4,6 +4,9 @@
     Author     : Talha Iqbal
 --%>
 
+/* Note: This is a temporary file for an upcoming feature and does not play any role
+ in the current state of the project*/
+
 <%@page import="java.util.Arrays"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
@@ -27,6 +30,5 @@
                 out.println("<p><img src = \"Images\\" + filePath.getName() + "\"></p>");
             }
         %>
-        <!--<p><img src = "F:\\Temporary Codes\\OnlineShoppingSystem\\Files\\Images\\download.jpg"></p>-->
     </body>
 </html>

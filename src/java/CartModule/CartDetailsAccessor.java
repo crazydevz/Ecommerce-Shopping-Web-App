@@ -3,14 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package AdminModule;
+package CartModule;
 
 /**
  *
  * @author Talha Iqbal
  */
-public interface AdminAccessible {
-    public boolean addProductToCatalog();
-    public boolean removeProductsFromCatalog();
-    public boolean updateProductDetails();
+public interface CartDetailsAccessor {
+    
+    public int getCustomerId();
+    
+    public int getProductId();
+    
+    public int getQuantity();
 }

@@ -20,15 +20,12 @@ public class ManageCartServlet extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException{
         
         String buttonClicked = req.getParameter("buttonClicked");
-//        String cartItemAddOrRemove = req.getParameter("BtnCartAddOrRemove");
         
         if("Add to Cart".equals(buttonClicked)){
-//            req.setAttribute("BtnCartAddOrRemove", "Remove from Cart");
-            req.getRequestDispatcher("AddToCartServlet").include(req, res);
+            req.getRequestDispatcher("AddToCartServlet").forward(req, res);
         }
         else if("Remove from Cart".equals(buttonClicked)){
-//            req.setAttribute("BtnCartAddOrRemove", "Add to Cart");
-            req.getRequestDispatcher("RemoveFromCartServlet").include(req, res);
+            req.getRequestDispatcher("RemoveFromCartServlet").forward(req, res);
         }
         else if("View Product".equals(buttonClicked)){
             req.getRequestDispatcher("SearchProductForCustomerServlet").forward(req, res);
@@ -37,12 +34,12 @@ public class ManageCartServlet extends HttpServlet {
             req.getRequestDispatcher("UpdateCartServlet").forward(req, res);
         }
         else if("Edit Cart".equals(buttonClicked)){
-            res.sendRedirect("EditCart.jsp");
+            res.sendRedirect("EditCartServlet");
         }
         else if("Checkout".equals(buttonClicked)){
             res.sendRedirect("checkoutForm.jsp");
         }
         else
-            res.getWriter().print("Oh no");
+            res.getWriter().print("Opps, something went wrong!");
     }
 }

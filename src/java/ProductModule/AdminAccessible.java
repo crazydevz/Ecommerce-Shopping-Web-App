@@ -3,15 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package CartModule;
-
-import java.util.List;
+package ProductModule;
 
 /**
  *
  * @author Talha Iqbal
  */
-public interface CartHandler {
-    public List<CartItem> getCartItems();
-    public boolean deleteAllCartItems();
+public interface AdminAccessible {
+    public boolean addProductToCatalog();
+    public boolean removeProductsFromCatalog();
+    public boolean updateProductDetails();
 }

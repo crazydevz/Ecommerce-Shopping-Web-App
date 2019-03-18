@@ -5,7 +5,6 @@
  */
 package DAOs;
 
-import ProductModule.Product;
 import ProductModule.ProductDetails;
 import ProductModule.ProductDetailsAccessor;
 import java.sql.SQLException;
@@ -16,7 +15,7 @@ import java.util.List;
  *
  * @author Talha Iqbal
  */
-public class ProductDAO{
+public class ProductDAO implements ProductDAOIntfc{
 
     // objects
     private Connection conn;
@@ -25,6 +24,7 @@ public class ProductDAO{
         conn = new Connection();
     }
     
+    @Override
     public List<ProductDetails> getProducts(int numberOfProducts){
         conn.makeConnection();
         try{
@@ -54,6 +54,7 @@ public class ProductDAO{
         return null;
     }
     
+    @Override
     public ProductDetails searchProductByName(String productName){
         conn.makeConnection();
         try{
@@ -81,6 +82,7 @@ public class ProductDAO{
         return null;
     }
     
+    @Override
     public boolean createProduct(ProductDetailsAccessor product){
         if(productExists(product.getName()))
             return false;
@@ -103,6 +105,7 @@ public class ProductDAO{
         return false;
     }
     
+    @Override
     public boolean deleteProduct(int productId){
         conn.makeConnection();
         try{
@@ -143,6 +146,7 @@ public class ProductDAO{
         return false;
     }
     
+    @Override
     public boolean searchProductByID(int productId){
         conn.makeConnection();
         try{
@@ -163,6 +167,7 @@ public class ProductDAO{
         return false;
     }
     
+    @Override
     public boolean updateProduct(ProductDetailsAccessor updatedProduct){
         conn.makeConnection();
         try{
@@ -185,6 +190,7 @@ public class ProductDAO{
         return false;
     }
     
+    @Override
     public boolean updateProductQuantity(){
         conn.makeConnection();
         try{

@@ -7,7 +7,6 @@ package Servlets;
 
 import CustomerModule.Customer;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,15 +20,24 @@ public class UpdateCartServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException{
         res.setContentType("text/html");
-        PrintWriter out = res.getWriter();
         
         Customer customer = (Customer) req.getSession().getAttribute("customer");
         
-        if(customer.updateQuantity(Integer.parseInt(req.getParameter("productId")), Integer.parseInt(req.getParameter("quantityInCart")))){
-            out.print("Cart updated!");
+        try{
+            if(customer.isLoggedIn()){
+                if(customer.updateQuantity(Integer.parseInt(req.getParameter("productId")), Integer.parseInt(req.getParameter("quantityInCart")))){
+                    res.getWriter().print("Cart updated!");
+                }
+                else{
+                    res.getWriter().print("An error occurred while updating the cart");
+                }
+            }
+            else{
+                res.sendRedirect("CustomerLogin.jsp");
+            }
         }
-        else{
-            out.print("An error occurred while updating the cart");
+        catch(NullPointerException ex){
+            res.sendRedirect("CustomerLogin.jsp");
         }
     }
 }

@@ -5,7 +5,6 @@
  */
 package DAOs;
 
-import CustomerModule.CustomerDetails;
 import CustomerModule.CustomerDetailsAccessor;
 import Utilities.UserDetailsAccessor;
 import java.sql.SQLException;
@@ -14,7 +13,7 @@ import java.sql.SQLException;
  *
  * @author Talha Iqbal
  */
-public class CustomerDAO {
+public class CustomerDAO implements CustomerDAOIntfc{
     
     // objects
     Connection conn;
@@ -43,6 +42,7 @@ public class CustomerDAO {
         return false;
     }
     
+    @Override
     public boolean checkIfExistsInt(int customerId){
         conn.makeConnection();
         try{
@@ -63,6 +63,7 @@ public class CustomerDAO {
         return false;
     }
     
+    @Override
      public boolean createCustomer(String phoneNumber, UserDetailsAccessor userDetails){
         if(!checkIfExists(userDetails.getName())){
             conn.makeConnection();
@@ -71,9 +72,19 @@ public class CustomerDAO {
                         "INSERT INTO `db_online_shopping`.`users` (`name`, `email`, `password`)\n" +
                         "VALUES ('" + userDetails.getName() + "', '" + userDetails.getEmail() + "', '" + userDetails.getPassword() +"');"
                 );
+                conn.rs = conn.stmt.executeQuery(
+                    "SELECT `AUTO_INCREMENT`\n" +
+                    "FROM  INFORMATION_SCHEMA.TABLES\n" +
+                    "WHERE TABLE_SCHEMA = 'db_online_shopping'\n" +
+                    "AND   TABLE_NAME   = 'users';"
+                );
+                int customersUsersID = 0;
+                if(conn.rs.isBeforeFirst() && conn.rs.next()){
+                    customersUsersID = conn.rs.getInt(1) - 1;
+                }
                 int result2 = conn.stmt.executeUpdate(
-                    "INSERT INTO `db_online_shopping`.`customers` (`phone_number`)\n" +
-                    "VALUES ('" + phoneNumber + "');"
+                    "INSERT INTO `db_online_shopping`.`customers` (`Users_id`, `phone_number`)"
+                    + "VALUES ('" + customersUsersID + "', '" + phoneNumber + "');"
                 );
                 if(result1 > 0 && result2 > 0){
                     return true;
@@ -89,6 +100,7 @@ public class CustomerDAO {
         return false;
     }
     
+    @Override
     public int readCustomer(String[] nameOrEmail, String password){
         conn.makeConnection();
         try{
@@ -113,6 +125,7 @@ public class CustomerDAO {
         return 0;
     }
     
+    @Override
     public boolean updateLoginDetails(UserDetailsAccessor userDetails){
         conn.makeConnection();
         try{
@@ -133,6 +146,7 @@ public class CustomerDAO {
         return false;
     }
     
+    @Override
     public boolean updateCustomerDetails(CustomerDetailsAccessor customerDetails, int userId){
         conn.makeConnection();
         try{

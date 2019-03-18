@@ -13,6 +13,9 @@ import java.util.List;
  *
  * @author Talha Iqbal
  */
+
+// This is just a test class for file retreival testing for an upcoming feature.
+
 public class FileRetreiver {
     public static void main(String[] args){
         File f = new File("F:\\Temporary Codes\\OnlineShoppingSystem\\Images");

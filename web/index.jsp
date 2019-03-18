@@ -19,6 +19,7 @@
             <input type="submit" value="Admin Login" name="buttonClicked" />
             <input type="submit" value="Customer Login" name="buttonClicked" />
             <input type="submit" value="Customer Signup" name="buttonClicked" />
+            <!--<input type="submit" value="Browse Catalog" name="buttonClicked" />-->
         </form>
     </body>
 </html>
