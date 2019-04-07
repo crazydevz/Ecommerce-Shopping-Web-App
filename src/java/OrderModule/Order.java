@@ -17,9 +17,6 @@ import DAOs.ProductDAO;
  */
 public class Order implements OrderIntfc{
     
-    // interfaces
-    private TransactionIntfc transaction;
-    
     // objects
     private final OrderDetails orderDetails;
     
@@ -32,7 +29,7 @@ public class Order implements OrderIntfc{
     @Override
     public boolean processOrder(int customerId, String customersCreditCardNo){
         if(orderDetails.getBillingAmount() != 0){
-            transaction = new Accounting(customersCreditCardNo);
+            TransactionIntfc transaction = new Accounting(customersCreditCardNo);
             float customerBalance = transaction.getCustomersBalance(customerId);
             if(customerBalance != 0 && customerBalance >= this.orderDetails.getBillingAmount()){
                 if(new OrderDAO().createOrder(this.orderDetails)){
