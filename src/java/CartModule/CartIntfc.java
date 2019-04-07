@@ -9,6 +9,9 @@ package CartModule;
  *
  * @author Talha Iqbal
  */
+
+// Note: This interface is not currently in use.
+
 public interface CartIntfc {
     public boolean addItem(int productId, int itemQuantity);
     public boolean removeItem(int productId);

@@ -12,9 +12,6 @@ import DAOs.CartDAO;
  * @author Talha Iqbal
  */
 public class Cart implements CartModule.CustomerAccessible{
-
-    // objects
-//    private CartItem item;
     
     private final CartDetails cartDetails;
     

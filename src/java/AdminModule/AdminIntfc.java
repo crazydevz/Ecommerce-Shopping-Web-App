@@ -15,7 +15,4 @@ public interface AdminIntfc {
     public boolean deleteProduct(int id);
     
     public boolean updateProductDetails();
-    
-    // Must use this interface before using the updateLoginDetails method of the User class.
-    public void setNewAdminInfo(String name, String email, String password);
 }
