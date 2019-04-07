@@ -8,9 +8,8 @@ package Utilities;
 /**
  *
  * @author Talha Iqbal
- * @param <T>
  */
-public abstract class User<T> {
+public abstract class User {
     
     // objects
     protected UserDetails userDetails;
@@ -24,7 +23,12 @@ public abstract class User<T> {
     }
     
     public abstract boolean login();
-    public abstract boolean updateLoginDetails();
+    protected void setNewUserInfo(String name, String email, String password){
+            this.userDetails.setName(name);
+            this.userDetails.setEmail(email);
+            this.userDetails.setPassword(password);
+    }
+    public abstract boolean updateLoginDetails(String name, String email, String password);
     public void logout() {
         if(this.userDetails.isLoggedIn())
             this.userDetails.setLoginStatus(false);

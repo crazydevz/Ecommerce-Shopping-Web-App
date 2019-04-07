@@ -25,7 +25,7 @@ public class UpdateCartServlet extends HttpServlet {
         
         try{
             if(customer.isLoggedIn()){
-                if(customer.updateQuantity(Integer.parseInt(req.getParameter("productId")), Integer.parseInt(req.getParameter("quantityInCart")))){
+                if(customer.updateItemQuantity(Integer.parseInt(req.getParameter("productId")), Integer.parseInt(req.getParameter("quantityInCart")))){
                     res.getWriter().print("Cart updated!");
                 }
                 else{

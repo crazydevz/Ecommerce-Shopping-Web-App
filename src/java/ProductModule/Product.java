@@ -14,7 +14,7 @@ import DAOs.ProductDAO;
 public class Product implements ProductModule.AdminAccessible{
     
     // objects
-    private ProductDetails productDetails;
+    private final ProductDetails productDetails;
     
     private Product(Builder builder){
         this.productDetails = new ProductDetails();

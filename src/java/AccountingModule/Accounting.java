@@ -14,7 +14,7 @@ import DAOs.AccountDAO;
 public class Accounting implements TransactionIntfc{
 
     // local variables
-    private String accountNumber;
+    private final String accountNumber;
     private float customersBalance;
     
     public Accounting(String accountNumber){

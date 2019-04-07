@@ -18,11 +18,8 @@ import Utilities.User;
  */
 public class Customer extends User{
     
-    // interfaces
-//    private CustomerAccessible cart;
-    
     // objects
-    private CustomerDetails customerDetails;
+    private final CustomerDetails customerDetails;
     
     private Customer(Builder builder){
         super(builder.id, builder.name, builder.email, builder.password);
@@ -80,22 +77,17 @@ public class Customer extends User{
             }
         return super.userDetails.isLoggedIn();
     }
-
-    public void setNewCustomerInfo(String name, String email, String password){
-            super.userDetails.setName(name);
-            super.userDetails.setEmail(email);
-            super.userDetails.setPassword(password);
-    }
     
     @Override
-    public boolean updateLoginDetails() {
+    public boolean updateLoginDetails(String name, String email, String password) {
         if(super.userDetails.isLoggedIn()){
+                super.setNewUserInfo(name, email, password);
                 return new CustomerDAO().updateLoginDetails(super.userDetails);
         }
         return false;
     }
     
-    // Product Handling Methods
+    // Cart Handling Methods
     public boolean addItemToCart(int productId, int itemQuantity){
         if(super.userDetails.isLoggedIn()){
             CustomerAccessible cart = new Cart.Builder().setCustomerIdProductIdItemQuantity(super.userDetails.getId(), productId, itemQuantity).build();
@@ -112,18 +104,18 @@ public class Customer extends User{
         return false;
     }
     
-    public boolean updateQuantity(int productId, int quantity){
+    public boolean updateItemQuantity(int productId, int itemQuantity){
         if(super.userDetails.isLoggedIn()){
-            CustomerAccessible cart = new Cart.Builder().setCustomerIdProductIdItemQuantity(super.userDetails.getId() ,productId, quantity).build();
+            CustomerAccessible cart = new Cart.Builder().setCustomerIdProductIdItemQuantity(super.userDetails.getId() ,productId, itemQuantity).build();
             return cart.updateItemQuantity();
         }
         return false;
     }
     
-    public boolean checkout(String customersAccountNo, String shippingAddress){
+    public boolean checkout(String customersCreditCardNo, String shippingAddress){
         if(super.userDetails.isLoggedIn()){
             CustomerAccessible cart = new Cart.Builder().setCustomerId(super.userDetails.getId()).build();
-            return new Order(cart.calculateSubtotal(), shippingAddress).processOrder(super.userDetails.getId(), customersAccountNo);
+            return new Order(cart.calculateSubtotal(), shippingAddress).processOrder(super.userDetails.getId(), customersCreditCardNo);
         }
         return false;
     }

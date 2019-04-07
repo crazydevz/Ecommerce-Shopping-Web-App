@@ -16,24 +16,13 @@ public class Cart implements CartModule.CustomerAccessible{
     // objects
 //    private CartItem item;
     
-    private CartDetails cartDetails;
-    
-//    public Cart(CartItem item){
-//        this.item = item;
-//    }
-//    
-//    public Cart(){
-//        // empty constructor
-//    }
+    private final CartDetails cartDetails;
     
     private Cart(Builder builder){
         this.cartDetails = new CartDetails();
         this.cartDetails.setCustomerId(builder.cartDetails.getCustomerId());
         this.cartDetails.setProductId(builder.cartDetails.getProductId());
         this.cartDetails.setQuantity(builder.cartDetails.getQuantity());
-//        this.customerId = builder.customerId;
-//        this.productId = builder.productId;
-//        this.quantity = builder.quantity;
     }
     
     public static class Builder{
@@ -43,23 +32,17 @@ public class Cart implements CartModule.CustomerAccessible{
             this.cartDetails.setCustomerId(customerId);
             this.cartDetails.setProductId(productId);
             this.cartDetails.setQuantity(quantity);
-//            this.customerId = customerId;
-//            this.productId = productId;
-//            this.quantity = quantity;
             return this;
         }
         
         public Builder setCustomerIdProductId(int customerId, int productId){
             this.cartDetails.setCustomerId(customerId);
             this.cartDetails.setProductId(productId);
-//            this.customerId = customerId;
-//            this.productId = productId;
             return this;
         }
         
         public Builder setCustomerId(int customerId){
             this.cartDetails.setCustomerId(customerId);
-//            this.customerId = customerId;
             return this;
         }
         

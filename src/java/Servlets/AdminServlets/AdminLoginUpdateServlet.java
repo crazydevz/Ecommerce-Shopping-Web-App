@@ -23,9 +23,9 @@ public class AdminLoginUpdateServlet extends HttpServlet {
         res.setContentType("text/html");
 
         Admin admin = (Admin) req.getSession().getAttribute("admin");
-        admin.setNewAdminInfo(req.getParameter("adminName"), req.getParameter("adminEmail"), req.getParameter("adminPassword"));
-        
-        if(admin.updateLoginDetails()){
+//        admin.setNewUserInfo(req.getParameter("adminName"), req.getParameter("adminEmail"), req.getParameter("adminPassword"));
+
+        if(admin.updateLoginDetails(req.getParameter("adminName"), req.getParameter("adminEmail"), req.getParameter("adminPassword"))){
             res.getWriter().print("Admin Credentials updated successfully!");
         }
         else{

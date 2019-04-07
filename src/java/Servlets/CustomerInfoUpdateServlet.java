@@ -21,9 +21,9 @@ public class CustomerInfoUpdateServlet extends HttpServlet {
         res.setContentType("text/html");
         
         Customer customer = (Customer) req.getSession().getAttribute("customer");
-        customer.setNewCustomerInfo(req.getParameter("customerName"), req.getParameter("customerEmail"), req.getParameter("customerPassword"));
-        
-        if(customer.updateLoginDetails()){
+//        customer.setNewUserInfo(req.getParameter("customerName"), req.getParameter("customerEmail"), req.getParameter("customerPassword"));
+
+        if(customer.updateLoginDetails(req.getParameter("customerName"), req.getParameter("customerEmail"), req.getParameter("customerPassword"))){
             res.getWriter().print("Customer Info Updated Successfully!");
         }
         else{

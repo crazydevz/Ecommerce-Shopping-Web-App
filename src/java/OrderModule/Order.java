@@ -21,7 +21,7 @@ public class Order implements OrderIntfc{
     private TransactionIntfc transaction;
     
     // objects
-    private OrderDetails orderDetails;
+    private final OrderDetails orderDetails;
     
     public Order(float billingAmount, String shippingAddress){
         orderDetails = new OrderDetails();
@@ -30,15 +30,17 @@ public class Order implements OrderIntfc{
     }
     
     @Override
-    public boolean processOrder(int customerId, String bankAccountNo){
+    public boolean processOrder(int customerId, String customersCreditCardNo){
         if(orderDetails.getBillingAmount() != 0){
-            transaction = new Accounting(bankAccountNo);
+            transaction = new Accounting(customersCreditCardNo);
             float customerBalance = transaction.getCustomersBalance(customerId);
             if(customerBalance != 0 && customerBalance >= this.orderDetails.getBillingAmount()){
                 if(new OrderDAO().createOrder(this.orderDetails)){
-                    return ((transaction.chargeCustomer(this.orderDetails.getBillingAmount()))
-                            && (new ProductDAO().updateProductQuantity())
-                            && (new CartDAO().deleteAllCartItems()));
+                    return (
+                        (transaction.chargeCustomer(this.orderDetails.getBillingAmount()))
+                        && (new ProductDAO().updateProductQuantity())
+                        && (new CartDAO().deleteAllCartItems())
+                    );
                 }
             }
         }

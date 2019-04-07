@@ -14,9 +14,8 @@ import Utilities.User;
  *
  * @author Talha Iqbal
  */
-public class Admin extends User<Admin>{
+public class Admin extends User{
     
-    // constructor for sign up
     private Admin(Builder builder){
         super(0 ,builder.name, builder.email, builder.password);
     }
@@ -86,16 +85,11 @@ public class Admin extends User<Admin>{
         }
         return super.userDetails.isLoggedIn();    
     }
-   
-    public void setNewAdminInfo(String name, String email, String password){
-            super.userDetails.setName(name);
-            super.userDetails.setEmail(email);
-            super.userDetails.setPassword(password);
-    }
-    
+
     @Override
-    public boolean updateLoginDetails() {
+    public boolean updateLoginDetails(String name, String email, String password) {
         if(super.userDetails.isLoggedIn()){
+                super.setNewUserInfo(name, email, password);
                 return new AdminDAO().updateLoginDetails(super.userDetails);
         }
         return false;
