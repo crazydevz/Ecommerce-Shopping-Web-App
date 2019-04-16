@@ -13,7 +13,7 @@ import DAOs.ProductDAO;
  */
 public class Product implements ProductModule.AdminAccessible{
     
-    // objects
+    // Objects
     private final ProductDetails productDetails;
     
     private Product(Builder builder){
@@ -32,16 +32,11 @@ public class Product implements ProductModule.AdminAccessible{
         private String category;
         private int amountInStock;
         
-        public Builder setProductNamePriceCategoryAmountInStock(String productName, float price, String category, int amountInStock){
+        public Builder setProductDetails(String productName, float price, String category, int amountInStock){
             this.name = productName;
             this.price = price;
             this.category = category;
             this.amountInStock = amountInStock;
-            return this;
-        }
-        
-        public Builder setAmountInStock(int amount){
-            this.amountInStock = amount;
             return this;
         }
         

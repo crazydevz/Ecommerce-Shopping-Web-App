@@ -15,8 +15,8 @@ import java.sql.SQLException;
  */
 public class CustomerDAO implements CustomerDAOIntfc{
     
-    // objects
-    Connection conn;
+    // Objects
+    private final Connection conn;
 
     public CustomerDAO() {
         conn = new Connection();
@@ -78,13 +78,13 @@ public class CustomerDAO implements CustomerDAOIntfc{
                     "WHERE TABLE_SCHEMA = 'db_online_shopping'\n" +
                     "AND   TABLE_NAME   = 'users';"
                 );
-                int customersUsersID = 0;
+                int customersUserID = 0;
                 if(conn.rs.isBeforeFirst() && conn.rs.next()){
-                    customersUsersID = conn.rs.getInt(1) - 1;
+                    customersUserID = conn.rs.getInt(1) - 1;
                 }
                 int result2 = conn.stmt.executeUpdate(
                     "INSERT INTO `db_online_shopping`.`customers` (`Users_id`, `phone_number`)"
-                    + "VALUES ('" + customersUsersID + "', '" + phoneNumber + "');"
+                    + "VALUES ('" + customersUserID + "', '" + phoneNumber + "');"
                 );
                 if(result1 > 0 && result2 > 0){
                     return true;
@@ -169,7 +169,7 @@ public class CustomerDAO implements CustomerDAOIntfc{
             return (result1 > 0 || result2 > 0);
         }
         catch(SQLException ex){
-            System.out.println("");
+            System.out.println(ex);
         }
         finally{
             conn.close();

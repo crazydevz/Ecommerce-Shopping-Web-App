@@ -10,9 +10,9 @@ package AdminModule;
  * @author Talha Iqbal
  */
 public interface AdminIntfc {
-    public boolean createProduct(String productName, float price, String category, int amountInStock);
+    public boolean createProduct(String productName, float productPrice, String productCategory, int productAmountInStock);
     
-    public boolean deleteProduct(int id);
+    public boolean deleteProduct(int productId);
     
     public boolean updateProductDetails();
 }

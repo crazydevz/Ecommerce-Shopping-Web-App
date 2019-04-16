@@ -10,13 +10,13 @@ package CartModule;
  * @author Talha Iqbal
  */
 public class CartItemDetails {
-    // local variables
+    // Local variables
     private int itemId;
     private String itemName;
     private float itemPrice;
     private int itemsInCart;
 
-    // Mutator Methods
+    // MUTATOR METHODS
     public void setItemId(int itemId){
         this.itemId = itemId;
     }
@@ -33,7 +33,7 @@ public class CartItemDetails {
         this.itemsInCart = itemsInCart;
     }
 
-    // Accessor Methods
+    // ACCESSOR METHODS
     public int getItemId(){
         return itemId;
     }

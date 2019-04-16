@@ -14,8 +14,8 @@ import java.sql.SQLException;
  */
 public class OrderDAO implements OrderDAOIntfc{
     
-    // objects
-    private Connection conn;
+    // Objects
+    private final Connection conn;
 
     public OrderDAO() {
         conn = new Connection();

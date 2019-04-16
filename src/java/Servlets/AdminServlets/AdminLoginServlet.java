@@ -25,10 +25,8 @@ public class AdminLoginServlet extends HttpServlet {
         res.setContentType("text/html");
         PrintWriter out = res.getWriter();
         
-        Admin admin = new Admin.Builder().setLoginDetails(
-                req.getParameter("adminNameOrEmail"),
-                req.getParameter("adminPassword"))
-                .build();
+        Admin admin = new Admin(req.getParameter("adminNameOrEmail"), req.getParameter("adminPassword"));
+        
         if(admin.login()){
             HttpSession session = req.getSession();
             session.setAttribute("admin", admin);

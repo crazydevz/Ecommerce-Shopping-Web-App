@@ -10,12 +10,12 @@ package CartModule;
  * @author Talha Iqbal
  */
 public class CartDetails implements CartDetailsAccessor{
-    // local variables
+    // Local variables
     private int customerId;
     private int productId;
     private int quantity;
 
-    // Mutators
+    // MUTATORS
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
@@ -28,7 +28,7 @@ public class CartDetails implements CartDetailsAccessor{
         this.quantity = quantity;
     }
 
-    // Accessors
+    // ACCESSORS
     @Override
     public int getCustomerId() {
         return customerId;
@@ -43,6 +43,4 @@ public class CartDetails implements CartDetailsAccessor{
     public int getQuantity() {
         return quantity;
     }
-    
-    
 }

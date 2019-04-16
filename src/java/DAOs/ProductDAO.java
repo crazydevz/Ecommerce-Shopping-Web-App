@@ -17,8 +17,8 @@ import java.util.List;
  */
 public class ProductDAO implements ProductDAOIntfc{
 
-    // objects
-    private Connection conn;
+    // Objects
+    private final Connection conn;
     
     public ProductDAO() {
         conn = new Connection();

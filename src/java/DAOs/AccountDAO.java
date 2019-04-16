@@ -13,8 +13,8 @@ import java.sql.SQLException;
  */
 public class AccountDAO implements AccountDAOIntfc{
     
-    // objects
-    Connection conn;
+    // Objects
+    private final Connection conn;
 
     public AccountDAO() {
         conn = new Connection();

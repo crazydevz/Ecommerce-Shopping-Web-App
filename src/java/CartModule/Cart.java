@@ -13,6 +13,7 @@ import DAOs.CartDAO;
  */
 public class Cart implements CartModule.CustomerAccessible{
     
+    // Objects
     private final CartDetails cartDetails;
     
     private Cart(Builder builder){
@@ -25,7 +26,7 @@ public class Cart implements CartModule.CustomerAccessible{
     public static class Builder{
         private CartDetails cartDetails = new CartDetails();
         
-        public Builder setCustomerIdProductIdItemQuantity(int customerId, int productId, int quantity){
+        public Builder setCartDetails(int customerId, int productId, int quantity){
             this.cartDetails.setCustomerId(customerId);
             this.cartDetails.setProductId(productId);
             this.cartDetails.setQuantity(quantity);

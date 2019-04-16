@@ -5,7 +5,6 @@
  */
 package DAOs;
 
-import CartModule.CartDetails;
 import CartModule.CartDetailsAccessor;
 import CartModule.CartItemDetails;
 import java.util.List;

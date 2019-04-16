@@ -17,7 +17,7 @@ import DAOs.ProductDAO;
  */
 public class Order implements OrderIntfc{
     
-    // objects
+    // Objects
     private final OrderDetails orderDetails;
     
     public Order(float billingAmount, String shippingAddress){

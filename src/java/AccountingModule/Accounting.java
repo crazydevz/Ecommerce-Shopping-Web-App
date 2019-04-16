@@ -13,7 +13,7 @@ import DAOs.AccountDAO;
  */
 public class Accounting implements TransactionIntfc{
 
-    // local variables
+    // Local variables
     private final String accountNumber;
     private float customersBalance;
     

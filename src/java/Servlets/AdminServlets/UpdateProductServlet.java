@@ -7,7 +7,6 @@ package Servlets.AdminServlets;
 
 import AdminModule.Admin;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +22,7 @@ public class UpdateProductServlet extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException{
         res.setContentType("text/html");
         
-        int id = Integer.parseInt(req.getParameter("productId"));
+        int productId = Integer.parseInt(req.getParameter("productId"));
         String productName = req.getParameter("productName");
         Float price = Float.parseFloat(req.getParameter("productPrice"));
         String category = req.getParameter("categoryList");
@@ -31,7 +30,7 @@ public class UpdateProductServlet extends HttpServlet {
         
         Admin admin = (Admin) req.getSession().getAttribute("admin");
         
-        if(admin.updateProductDetails(productName, price, category, amountInStock, id)){
+        if(admin.updateProductDetails(productId, productName, price, category, amountInStock)){
             res.getWriter().print("Product updated successfully!");
         }
         else{

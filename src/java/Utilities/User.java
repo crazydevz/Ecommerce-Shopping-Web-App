@@ -11,7 +11,7 @@ package Utilities;
  */
 public abstract class User {
     
-    // objects
+    // Objects
     protected UserDetails userDetails;
     
     public User(int id, String name, String email, String password){

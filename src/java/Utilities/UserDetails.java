@@ -11,16 +11,16 @@ package Utilities;
  */
 public class UserDetails implements UserDetailsAccessor{
     
-    // local variables
+    // Local variables
     private int id;
     private String name;
     private String email;
     private String password;
 
-    // state variables
+    // State variables
     private boolean loginStatus;
     
-    // Accessor Methods
+    // ACCESSOR METHODS
     public boolean isLoggedIn(){
         return loginStatus;
     }
@@ -45,7 +45,7 @@ public class UserDetails implements UserDetailsAccessor{
         return password;
     }
 
-    // Mutator Methods
+    // MUTATOR METHODS
     public void setLoginStatus(boolean loginStatus){
         this.loginStatus = loginStatus;
     }

@@ -15,8 +15,8 @@ import java.sql.SQLException;
  */
 public class AdminDAO implements AdminDAOIntfc{
     
-    // objects
-    Connection conn;
+    // Objects
+    private final Connection conn;
 
     public AdminDAO() {
         conn = new Connection();

@@ -17,8 +17,8 @@ import java.util.List;
  */
 public class CartDAO implements CartDAOIntfc{
     
-    // objects
-    Connection conn;
+    // Objects
+    private final Connection conn;
 
     public CartDAO() {
         conn = new Connection();

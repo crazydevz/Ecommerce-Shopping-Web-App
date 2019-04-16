@@ -14,4 +14,5 @@ import OrderModule.OrderDetailsAccessor;
 public interface OrderDAOIntfc {
     
     public boolean createOrder(OrderDetailsAccessor orderDetails);
+    
 }

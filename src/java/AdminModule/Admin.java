@@ -16,56 +16,36 @@ import Utilities.User;
  */
 public class Admin extends User{
     
-    private Admin(Builder builder){
-        super(0 ,builder.name, builder.email, builder.password);
+    public Admin(String nameOrEmail, String password) {
+        super(0, nameOrEmail, nameOrEmail, password);
     }
     
-    public static class Builder{
-        private String name;
-        private String email;
-        private String password;
-        
-        public Builder setLoginDetails(String nameOrEmail, String password){
-            this.name = nameOrEmail;
-            this.email = nameOrEmail;
-            this.password = password;
-            return this;
-        }
-        
-        public Admin build(){
-            return new Admin(this);
-        }
-    }   
-    
-    // Product Handling Methods
-    public boolean createProduct(String productName, float price, String category, int amountInStock){
+    // PRODUCT HANDLING METHODS
+    public boolean createProduct(String name, float price, String category, int amountInStock){
         if(super.userDetails.isLoggedIn()){
-            AdminAccessible product = new Product.Builder().setProductNamePriceCategoryAmountInStock(productName, price, category, amountInStock).build();
+            AdminAccessible product = new Product.Builder().setProductDetails(name, price, category, amountInStock).build();
             return product.addProductToCatalog();
         }
-        else
-            return false;
+        return false;
     }
     
-    public boolean deleteProduct(int id){
+    public boolean deleteProduct(int productId){
         if(super.userDetails.isLoggedIn()){
-            AdminAccessible product = new Product.Builder().setId(id).build();
+            AdminAccessible product = new Product.Builder().setId(productId).build();
             return product.removeProductsFromCatalog();
         }
-        else
-            return false;
+        return false;
     }
     
-    public boolean updateProductDetails(String productName, float price, String category, int amountInStock, int productId){
+    public boolean updateProductDetails(int id, String name, float price, String category, int amountInStock){
         if(super.userDetails.isLoggedIn()){
-            AdminAccessible product = new Product.Builder().setId(productId).setProductNamePriceCategoryAmountInStock(productName, price, category, amountInStock).build();
+            AdminAccessible product = new Product.Builder().setId(id).setProductDetails(name, price, category, amountInStock).build();
             return product.updateProductDetails();
         }
-        else
-            return false;
-    } 
+        return false;
+    }
     
-    // Admin Handling Methods
+    // ADMIN HANDLING METHODS
     @Override
     public boolean login() {
         if(super.userDetails.isLoggedIn())

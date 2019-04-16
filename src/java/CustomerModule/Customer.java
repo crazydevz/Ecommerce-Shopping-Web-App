@@ -18,7 +18,7 @@ import Utilities.User;
  */
 public class Customer extends User{
     
-    // objects
+    // Objects
     private final CustomerDetails customerDetails;
     
     private Customer(Builder builder){
@@ -69,12 +69,13 @@ public class Customer extends User{
     
     @Override
     public boolean login() {
-            String[] nameOrEmail = {super.userDetails.getName(), super.userDetails.getEmail()};
-            // verify customer's sign in credentials
-            super.userDetails.setId(new CustomerDAO().readCustomer(nameOrEmail, super.userDetails.getPassword()));
-            if(super.userDetails.getId() != 0){
-                super.userDetails.setLoginStatus(true);
-            }
+        String[] nameOrEmail = {super.userDetails.getName(), super.userDetails.getEmail()};
+        
+        // verify customer's sign in credentials
+        super.userDetails.setId(new CustomerDAO().readCustomer(nameOrEmail, super.userDetails.getPassword()));
+        if(super.userDetails.getId() != 0){
+            super.userDetails.setLoginStatus(true);
+        }
         return super.userDetails.isLoggedIn();
     }
     
@@ -87,10 +88,10 @@ public class Customer extends User{
         return false;
     }
     
-    // Cart Handling Methods
+    // CART HANDLING METHODS
     public boolean addItemToCart(int productId, int itemQuantity){
         if(super.userDetails.isLoggedIn()){
-            CustomerAccessible cart = new Cart.Builder().setCustomerIdProductIdItemQuantity(super.userDetails.getId(), productId, itemQuantity).build();
+            CustomerAccessible cart = new Cart.Builder().setCartDetails(super.userDetails.getId(), productId, itemQuantity).build();
             return cart.addItem();
         }
         return false;
@@ -106,7 +107,7 @@ public class Customer extends User{
     
     public boolean updateItemQuantity(int productId, int itemQuantity){
         if(super.userDetails.isLoggedIn()){
-            CustomerAccessible cart = new Cart.Builder().setCustomerIdProductIdItemQuantity(super.userDetails.getId() ,productId, itemQuantity).build();
+            CustomerAccessible cart = new Cart.Builder().setCartDetails(super.userDetails.getId() ,productId, itemQuantity).build();
             return cart.updateItemQuantity();
         }
         return false;
@@ -120,7 +121,7 @@ public class Customer extends User{
         return false;
     }
     
-    // External Accessors
+    // ACCESSOR METHODS
     public int getId(){
         return super.userDetails.getId();
     }
