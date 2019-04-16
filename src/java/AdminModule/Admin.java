@@ -25,13 +25,6 @@ public class Admin extends User{
         private String email;
         private String password;
         
-//        public Builder setNewLoginDetails(String name, String email, String password){
-//            this.name = name;
-//            this.email = email;
-//            this.password = password;
-//            return this;
-//        }
-        
         public Builder setLoginDetails(String nameOrEmail, String password){
             this.name = nameOrEmail;
             this.email = nameOrEmail;
